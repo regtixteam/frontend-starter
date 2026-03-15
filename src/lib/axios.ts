@@ -1,13 +1,14 @@
 import Axios from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const api = Axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/api`,
+  baseURL: `${import.meta.env.PUBLIC_API_URL}/api`,
 });
 
 api.interceptors.request.use(
   (config) => {
-    const token = Cookies.get("token");
+    // const token = Cookies.get("token");
+    const token = "";
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
@@ -25,7 +26,7 @@ api.interceptors.response.use(
       error.response.status === 401 &&
       !error.config.url.includes("/auth/login")
     ) {
-      Cookies.remove("token");
+      // Cookies.remove("token");
       localStorage.removeItem("user");
       window.location.href = "/auth/login";
     }

@@ -1,0 +1,12 @@
+---
+import BaseLayout from "@/layout/BaseLayout.astro";
+import EventsList from "@/components/vue/event/Events.vue";
+---
+
+<BaseLayout title="Events">
+  <Fragment slot="title">Events</Fragment>
+
+  <main class="max-w-6xl mx-auto py-16 px-6">
+    <EventsList client:load />
+  </main>
+</BaseLayout>
